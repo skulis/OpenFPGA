@@ -23,34 +23,49 @@ Guides can be found in the *compilation* directory in the main folder. We tested
 As a general rule, the compilation follows these steps:
 
 1) You clone the repository with:
-git clone --recurse-submodules https://github.com/LNIS-Projects/OpenFPGA,git
+
+.. code-block:: bash
+
+   git clone --recurse-submodules https://github.com/LNIS-Projects/OpenFPGA,git
 
 Two different approaches exist from then on: Either you need the full flow, or you just need the extended version of VPR.
 If you need the full flow:
 
 2) Go into the folder you just cloned and make the different submodules through a global Makefile:
-cd OpenFPGA 
-mkdir build (*if folder doesn't already exist*)
-cd build
-cmake ..
-make OR make -j (*if you have multiple cores, this will make the compilation way faster*) 
+
+.. code-block:: bash
+
+   cd OpenFPGA 
+   mkdir build (*if folder doesn't already exist*)
+   cd build
+   cmake ..
+   make # or make -j (*if you have multiple cores, this will make the compilation way faster*) 
 
 If you only need vpr:
-cd OpenFPGA 
-mkdir build (if folder doesn't already exist)
-cd build
-cmake ..
-make vpr/make vpr -j
+
+.. code-block:: bash
+
+   cd OpenFPGA 
+   mkdir build (if folder doesn't already exist)
+   cd build
+   cmake ..
+   make vpr/make vpr -j
 
 3) Architectures, circuits and already written scripts exist to allow you to test the flow without having to provide any new information to the system. For this:
-cd vpr7_x2p
-cd vpr
-source ./go_fpga_verilog/spice.sh
+
+.. code-block:: bash
+
+   cd vpr7_x2p
+   cd vpr
+   source ./go_fpga_verilog/spice.sh
 
 They are scripts linking to a testing architecture and a simple circuit.
 
 4) If you only need to see the new options implemented in vpr, do:
-./vpr
+
+.. code-block:: bash
+
+   ./vpr
 
 This step will show you all the different options which were added on top of VPR to enable deeper analysis of FPGA architectures.
 
