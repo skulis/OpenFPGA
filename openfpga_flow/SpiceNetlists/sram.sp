@@ -8,3 +8,10 @@ Xout_pt loop_out out svdd sgnd svdd sgnd cpt nmos_size='size' pmos_size='size*be
 Xoutb_pt loop_outb outb svdd sgnd svdd sgnd cpt 
 Rin in loop_out 0 
 .eom sram6T
+
+* Sub Circuit
+* SRAM
+* Input to force write the stored bit
+.subckt sram6T_blwl in out outb bl wl blb svdd sgnd size=1
+* Empty stub for now
+.eom sram6T_blwl
