@@ -351,15 +351,16 @@
         <port type="output" prefix="sumout" size="1"/>
         <port type="output" prefix="cout" size="1"/>
       </circuit_model>
-      <circuit_model type="sram" name="sram6T" prefix="sram" spice_netlist="${OPENFPGA_PATH}/openfpga_flow/SpiceNetlists/sram.sp" verilog_netlist="${OPENFPGA_PATH}/openfpga_flow/VerilogNetlists/sram.v">
+      <circuit_model type="sram" name="sram6T_blwl" prefix="sram" spice_netlist="${OPENFPGA_PATH}/openfpga_flow/SpiceNetlists/sram.sp" verilog_netlist="${OPENFPGA_PATH}/openfpga_flow/VerilogNetlists/sram.v">
         <design_technology type="cmos"/>
         <input_buffer exist="on" circuit_model_name="INV1X"/>
         <output_buffer exist="on" circuit_model_name="INV1X"/>
-        <pass_gate_logic circuit_model_name="TGATEX1"/>
-        <port type="input" prefix="in" size="1"/>
-        <port type="output" prefix="out" size="2"/>
+        <port type="input" prefix="din" size="1"/>
+        <port type="output" prefix="dout" size="2"/>
+        <port type="bl" prefix="bl" size="1"/>
+        <port type="wl" prefix="wl" size="1"/>
+        <port type="blb" prefix="bl" size="1"/>
       </circuit_model>
-
     </module_circuit_models>
   </spice_settings>
   <device>
@@ -387,9 +388,9 @@
 	  -->
     <area grid_logic_tile_area="0"/>
     <sram area="6">
-      <verilog organization="scan-chain" circuit_model_name="sc_dff_compact"/>
-      <!--verilog organization="memory-bank" circuit_model_name="sram6T_blwl"/-->
-      <spice organization="standalone" circuit_model_name="sram6T" />
+      <!--verilog organization="scan-chain" circuit_model_name="sc_dff_compact"/-->
+      <verilog organization="memory-bank" circuit_model_name="sram6T_blwl"/>
+      <spice organization="standalone" circuit_model_name="sram6T_blwl" />
     </sram>
     <chan_width_distr>
       <io width="1.000000"/>
